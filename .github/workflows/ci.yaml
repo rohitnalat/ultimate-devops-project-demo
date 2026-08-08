@@ -19,16 +19,13 @@ jobs:
           go-version: '1.22'
 
       - name: Download Go dependencies
-        run: cd src/product-catalog 
-             go mod download
+        run: cd src/product-catalog && go mod download
 
       - name: Build
-        run: cd src/product-catalog 
-             go build -o product-catalog ./src/product-catalog/main.go
+        run: cd src/product-catalog && go build -o product-catalog ./src/product-catalog/main.go
 
       - name: Unit Tests
-        run: cd src/product-catalog 
-             go test ./...
+        run: cd src/product-catalog && go test ./...
 
   code-quality:
     runs-on: ubuntu-latest
