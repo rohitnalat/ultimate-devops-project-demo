@@ -22,7 +22,7 @@ jobs:
         run: cd src/product-catalog && go mod download
 
       - name: Build
-        run: cd src/product-catalog && go build -o product-catalog ./src/product-catalog/main.go
+        run: cd src/product-catalog && go build -o product-catalog .
 
       - name: Unit Tests
         run: cd src/product-catalog && go test ./...
@@ -33,6 +33,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
 
       - name: Run golangci-lint
         run: |
